@@ -3,6 +3,9 @@ package umc.hospital.domain;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Getter
 @Builder
@@ -19,4 +22,7 @@ public class Hospital {
 
     @Column(nullable = false, length = 30)
     private String address;
+
+    @OneToMany(mappedBy = "hospital", cascade = CascadeType.PERSIST)
+    private List<HospitalDetail> detailList = new ArrayList<>();
 }

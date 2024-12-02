@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import umc.hospital.apiPayload.ApiResponse;
 import umc.hospital.converter.PatientConverter;
 import umc.hospital.domain.Patient;
-import umc.hospital.service.PatientCommandService;
+import umc.hospital.service.patientService.PatientCommandService;
 import umc.hospital.web.dto.PatientRequestDTO;
 import umc.hospital.web.dto.PatientResponseDTO;
 

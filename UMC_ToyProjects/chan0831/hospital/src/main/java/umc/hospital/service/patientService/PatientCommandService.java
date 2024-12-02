@@ -1,7 +1,5 @@
-package umc.hospital.service;
+package umc.hospital.service.patientService;
 
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 import umc.hospital.domain.Patient;
 import umc.hospital.web.dto.PatientRequestDTO;
 

@@ -23,6 +23,9 @@ public class Department {
     @OneToMany(mappedBy = "department", cascade = CascadeType.PERSIST)
     private List<Doctor> doctorList = new ArrayList<>();
 
+    @OneToMany(mappedBy = "department", cascade = CascadeType.PERSIST)
+    private List<HospitalDetail> detailList = new ArrayList<>();
+
 
 
 }
