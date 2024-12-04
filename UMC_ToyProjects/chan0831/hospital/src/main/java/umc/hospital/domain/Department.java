@@ -20,11 +20,14 @@ public class Department {
     @Column(nullable = false, length = 30)
     private String name;
 
+    @Column(nullable = false, length = 30)
+    private String phoneNum;
+
     @OneToMany(mappedBy = "department", cascade = CascadeType.PERSIST)
     private List<Doctor> doctorList = new ArrayList<>();
 
     @OneToMany(mappedBy = "department", cascade = CascadeType.PERSIST)
-    private List<HospitalDetail> detailList = new ArrayList<>();
+    private List<Hospital> hospitalList = new ArrayList<>();
 
 
 

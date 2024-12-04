@@ -24,5 +24,5 @@ public class Hospital {
     private String address;
 
     @OneToMany(mappedBy = "hospital", cascade = CascadeType.PERSIST)
-    private List<HospitalDetail> detailList = new ArrayList<>();
+    private List<Department> departmentList = new ArrayList<>();
 }

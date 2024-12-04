@@ -16,7 +16,10 @@ public enum ErrorStatus implements BaseErrorCode {
     _FORBIDDEN(HttpStatus.FORBIDDEN, "COMMON403", "금지된 요청입니다."),
 
     //병원 관련 에러
-    HOSPITAL_NOT_FOUND(HttpStatus.BAD_REQUEST,"HOSPITAL4001", "존재하지 않는 병원입니다." );
+    HOSPITAL_NOT_FOUND(HttpStatus.BAD_REQUEST,"HOSPITAL4001", "존재하지 않는 병원입니다." ),
+
+    //진료과 관련 에러
+    DEPARTMNET_NOT_FOUND(HttpStatus.NOT_FOUND, "DEPARTMENT4001", "존재하지 않는 진료과입니다.");
 
 
 //    // 멤버 관려 에러
@@ -41,6 +44,7 @@ public enum ErrorStatus implements BaseErrorCode {
 //    //mission
 //    MISSION_ALREADY_EXISTS(HttpStatus.BAD_REQUEST, "MISSION4001", "이미 진행중이거나 완료된 미션입니다."),
 //    MISSION_NOT_FOUND(HttpStatus.NOT_FOUND, "MISSION4002", "존재하지 않는 미션입니다.");
+
 
 
     private final HttpStatus httpStatus;
