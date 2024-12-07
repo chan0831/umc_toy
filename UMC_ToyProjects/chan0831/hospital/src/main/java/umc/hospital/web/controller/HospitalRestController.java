@@ -7,7 +7,7 @@ import umc.hospital.apiPayload.ApiResponse;
 import umc.hospital.converter.HospitalConverter;
 import umc.hospital.domain.Department;
 import umc.hospital.domain.Hospital;
-import umc.hospital.service.HospitalDetailService.HospitalDetailQueryServiceImpl;
+import umc.hospital.service.departmentService.DepartmentQueryService;
 import umc.hospital.service.hospitalService.HospitalCommandService;
 import umc.hospital.service.hospitalService.HospitalCommandServiceImpl;
 import umc.hospital.service.hospitalService.HospitalQueryService;
@@ -23,7 +23,7 @@ import java.util.List;
 public class HospitalRestController {
 
     private final HospitalCommandService hospitalCommandService ;
-    private final HospitalDetailQueryServiceImpl hospitalDetailQueryServiceImpl;
+    private final DepartmentQueryService departmentQueryService;
 
     @PostMapping("/{hospitalId}")
     public ApiResponse<HospitalResponseDTO.selectHospitalResultDTO> selectHospital
@@ -36,7 +36,7 @@ public class HospitalRestController {
 
     @GetMapping("/{hospitalId}/departments")
     public ApiResponse<List<DepartmentResponseDTO.SelectDepartmentResultDTO>> getDepartments(@PathVariable Long hospitalId){
-        List<DepartmentResponseDTO.SelectDepartmentResultDTO> result = hospitalDetailQueryServiceImpl.getDepartmentsByHospital(hospitalId);
+        List<DepartmentResponseDTO.SelectDepartmentResultDTO> result = departmentQueryService.selectDepartmentResult(hospitalId);
 
         return ApiResponse.onSuccess(result);
     }

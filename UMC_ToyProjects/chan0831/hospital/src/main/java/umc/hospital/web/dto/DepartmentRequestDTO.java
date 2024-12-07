@@ -10,7 +10,7 @@ public class DepartmentRequestDTO {
     public static class SelectDepartmentDTO{
 
         private Long Id;
-        private String name;
+
 
     }
 }

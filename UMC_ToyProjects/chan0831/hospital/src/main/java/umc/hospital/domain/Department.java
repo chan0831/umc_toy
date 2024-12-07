@@ -26,9 +26,9 @@ public class Department {
     @OneToMany(mappedBy = "department", cascade = CascadeType.PERSIST)
     private List<Doctor> doctorList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "department", cascade = CascadeType.PERSIST)
-    private List<Hospital> hospitalList = new ArrayList<>();
-
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "hospital_id")
+    private Hospital hospital;
 
 
 }
