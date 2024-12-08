@@ -34,4 +34,6 @@ public class Reservation {
     @JoinColumn(name = "doctor_id")
     private Doctor doctor;
 
+    private int price;
+
 }

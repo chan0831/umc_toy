@@ -19,7 +19,13 @@ public enum ErrorStatus implements BaseErrorCode {
     HOSPITAL_NOT_FOUND(HttpStatus.BAD_REQUEST,"HOSPITAL4001", "존재하지 않는 병원입니다." ),
 
     //진료과 관련 에러
-    DEPARTMNET_NOT_FOUND(HttpStatus.NOT_FOUND, "DEPARTMENT4001", "존재하지 않는 진료과입니다.");
+    DEPARTMNET_NOT_FOUND(HttpStatus.NOT_FOUND, "DEPARTMENT4001", "존재하지 않는 진료과입니다."),
+
+    //환자 관련 에러
+    PATIENT_NOT_FOUND(HttpStatus.NOT_FOUND,"PATIENT4001" ,"존재하지 않는 환자입니다." ),
+
+    //의사 관련 에러
+    DOCTOR_NOT_FOUND(HttpStatus.NOT_FOUND,"DOCTOR4001" , "존재하지 않는 의사입니다." );
 
 
 //    // 멤버 관려 에러
