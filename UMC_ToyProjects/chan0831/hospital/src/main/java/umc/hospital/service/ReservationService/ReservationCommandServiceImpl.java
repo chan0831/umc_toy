@@ -14,6 +14,8 @@ import umc.hospital.repository.ReservationRepository;
 import umc.hospital.web.dto.ReservationRequestDTO;
 import umc.hospital.web.dto.ReservationResponseDTO;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class ReservationCommandServiceImpl implements ReservationCommandService{
@@ -34,5 +36,17 @@ public class ReservationCommandServiceImpl implements ReservationCommandService{
         Reservation reservation = ReservationConverter.toReservation(request, patient, doctor);
 
         return reservationRepository.save(reservation);
+    }
+
+    @Override
+    public List<ReservationResponseDTO.ReservationResultDTO> selectReservationList(ReservationRequestDTO.selectReservationDTO request) {
+
+        Patient patient = patientRepository.findById(request.getPatientId())
+                .orElseThrow(()->new GeneralException(ErrorStatus.PATIENT_NOT_FOUND));
+
+
+        List<Reservation> reservationList = reservationRepository.findByPatient(patient);
+
+        return ReservationConverter.toReservationListDTO(reservationList);
     }
 }

@@ -16,4 +16,10 @@ public class ReservationRequestDTO {
         private int price;
         private String content;
     }
+
+    @Getter
+    public static class selectReservationDTO{
+
+        private Long patientId;
+    }
 }

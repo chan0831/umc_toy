@@ -2,17 +2,16 @@ package umc.hospital.web.controller;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import umc.hospital.apiPayload.ApiResponse;
 import umc.hospital.converter.ReservationConverter;
 import umc.hospital.domain.Reservation;
 import umc.hospital.service.ReservationService.ReservationCommandService;
-import umc.hospital.service.ReservationService.ReservationCommandServiceImpl;
+import umc.hospital.service.ReservationService.ReservationQueryService;
 import umc.hospital.web.dto.ReservationRequestDTO;
 import umc.hospital.web.dto.ReservationResponseDTO;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -27,5 +26,13 @@ public class ReservationRestController {
 
         Reservation reservation = reservationCommandService.createReservation(request);
         return ApiResponse.onSuccess(ReservationConverter.toReservationResult(reservation));
+    }
+
+    @PostMapping("/myReservations")
+    public ApiResponse<List<ReservationResponseDTO.ReservationResultDTO>>
+            selectReservation(@RequestBody @Valid ReservationRequestDTO.selectReservationDTO request){
+
+        List<ReservationResponseDTO.ReservationResultDTO> resultList = reservationCommandService.selectReservationList(request);
+        return ApiResponse.onSuccess(resultList);
     }
 }

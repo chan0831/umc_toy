@@ -22,7 +22,7 @@ public class Reservation {
     @Column(columnDefinition = "TEXT")
     private String content;
 
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     @Column(columnDefinition = "VARCHAR(10) DEFAULT 'ACTIVE'")
     private RStatus status;
 

@@ -7,6 +7,9 @@ import umc.hospital.domain.Reservation;
 import umc.hospital.web.dto.ReservationRequestDTO;
 import umc.hospital.web.dto.ReservationResponseDTO;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class ReservationConverter {
 
     public static ReservationResponseDTO.ReservationResultDTO toReservationResult(Reservation reservation){
@@ -32,5 +35,20 @@ public class ReservationConverter {
                 .price(request.getPrice())
                 .content(request.getContent())
                 .build();
+    }
+
+    public static List<ReservationResponseDTO.ReservationResultDTO> toReservationListDTO(List<Reservation> reservationList){
+
+        return reservationList.stream()
+                .map(reservation -> new ReservationResponseDTO.ReservationResultDTO(
+                        reservation.getPatient().getName(),
+                        reservation.getDoctor().getDepartment().getHospital().getName(),
+                        reservation.getTime(),
+                        reservation.getDoctor().getName(),
+                        reservation.getPrice(),
+                        reservation.getStatus(),
+                        reservation.getDoctor().getDepartment().getName(),
+                        reservation.getContent())
+                ).collect(Collectors.toList());
     }
 }
