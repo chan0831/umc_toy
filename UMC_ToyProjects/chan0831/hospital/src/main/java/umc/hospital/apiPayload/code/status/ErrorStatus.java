@@ -25,7 +25,10 @@ public enum ErrorStatus implements BaseErrorCode {
     PATIENT_NOT_FOUND(HttpStatus.NOT_FOUND,"PATIENT4001" ,"존재하지 않는 환자입니다." ),
 
     //의사 관련 에러
-    DOCTOR_NOT_FOUND(HttpStatus.NOT_FOUND,"DOCTOR4001" , "존재하지 않는 의사입니다." );
+    DOCTOR_NOT_FOUND(HttpStatus.NOT_FOUND,"DOCTOR4001" , "존재하지 않는 의사입니다." ),
+
+    //예약 관련 에러
+    RESERVATION_NOT_FOUND(HttpStatus.NOT_FOUND,"RESERVATION4001" , "존재하지 않는 예약입니다." );
 
 
 //    // 멤버 관려 에러

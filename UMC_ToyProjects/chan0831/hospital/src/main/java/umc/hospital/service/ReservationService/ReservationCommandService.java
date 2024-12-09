@@ -11,4 +11,5 @@ public interface ReservationCommandService {
 
     List<ReservationResponseDTO.ReservationResultDTO> selectReservationList(ReservationRequestDTO.selectReservationDTO request);
 
+    Reservation changeStatus(Long id);
 }

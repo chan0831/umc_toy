@@ -2,6 +2,7 @@ package umc.hospital.service.departmentService;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import umc.hospital.apiPayload.code.status.ErrorStatus;
 import umc.hospital.apiPayload.exception.GeneralException;
 import umc.hospital.converter.DepartmentConverter;
@@ -15,6 +16,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class DepartmentQueryServiceImpl implements DepartmentQueryService{
 
     private final DepartmentRepositroy departmentRepositroy;

@@ -2,12 +2,14 @@ package umc.hospital.service.ReservationService;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import umc.hospital.apiPayload.code.status.ErrorStatus;
 import umc.hospital.apiPayload.exception.GeneralException;
 import umc.hospital.converter.ReservationConverter;
 import umc.hospital.domain.Doctor;
 import umc.hospital.domain.Patient;
 import umc.hospital.domain.Reservation;
+import umc.hospital.domain.enums.RStatus;
 import umc.hospital.repository.DoctorRepository;
 import umc.hospital.repository.PatientRepository;
 import umc.hospital.repository.ReservationRepository;
@@ -18,6 +20,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class ReservationCommandServiceImpl implements ReservationCommandService{
 
     private final ReservationRepository reservationRepository;
@@ -48,5 +51,14 @@ public class ReservationCommandServiceImpl implements ReservationCommandService{
         List<Reservation> reservationList = reservationRepository.findByPatient(patient);
 
         return ReservationConverter.toReservationListDTO(reservationList);
+    }
+
+    @Override
+    public Reservation changeStatus(Long id) {
+        Reservation reservation = reservationRepository.findById(id)
+                .orElseThrow(()-> new GeneralException(ErrorStatus.RESERVATION_NOT_FOUND));
+
+        reservation.cancel(RStatus.CANCEL);
+        return reservation;
     }
 }

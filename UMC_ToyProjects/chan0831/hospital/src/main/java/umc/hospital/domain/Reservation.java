@@ -36,4 +36,8 @@ public class Reservation {
 
     private int price;
 
+    public void cancel(RStatus cancel){
+        this.status = cancel;
+    }
+
 }

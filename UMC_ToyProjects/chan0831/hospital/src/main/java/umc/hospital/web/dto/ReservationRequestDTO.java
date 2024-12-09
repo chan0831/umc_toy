@@ -22,4 +22,6 @@ public class ReservationRequestDTO {
 
         private Long patientId;
     }
+
+
 }
